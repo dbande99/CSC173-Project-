@@ -45,7 +45,7 @@ void DFA_get_transition(DFA dfa, char symb)
     for(int i = 0; i < dfa->size; i++)
     {
         //i represents next state
-        printf("%d %d %c %c \n", dfa->current_state, i, dfa->matrix.matrix[dfa->current_state][i], symb);
+        //printf("%d %d %c %c \n", dfa->current_state, i, dfa->matrix.matrix[dfa->current_state][i], symb);
         if(symb == dfa->matrix.matrix[dfa->current_state][i])
         {
             dfa->current_state = i;
@@ -54,7 +54,7 @@ void DFA_get_transition(DFA dfa, char symb)
         //did not find transition
         else if(i == dfa->size - 1)
         {
-            printf("%d %c \n", dfa->current_state, symb);
+            //printf("%d %c \n", dfa->current_state, symb);
             dfa -> current_state = REJECT;
         }
     }
@@ -76,6 +76,6 @@ bool DFA_execute(DFA dfa, char *input)
         }
 
     }
-    printf("%d", dfa->current_state);
+    //printf("%d", dfa->current_state);
     return (dfa->current_state+1) == dfa->size;
 }

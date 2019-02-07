@@ -30,33 +30,31 @@ DFA DFA_question2()
 DFA DFA_question3()
 {
     DFA d = new_DFA(3);
-   // AdjMatrix a = new_matrix(3);
+
     d->matrix.matrix[0][1] = '0';
     d->matrix.matrix[1][2] = '0';
     d->matrix.matrix[2][1] = '0';
-
     d->matrix.matrix[0][0] = '1';
     d->matrix.matrix[1][1] = '1';
     d->matrix.matrix[2][2] = '1';
 
-    //free a eventually
     return d;
 }
 int main()
 {
-    /*char* test = "csc173";
-    DFA d = DFA_question1();
+    /*char* test1 = "csc173";
+    DFA d1 = DFA_question1();
 
-    printf("%d",DFA_execute(d,test));
+    printf("%d",DFA_execute(d1,test1));
 
     char* test2 = "cat";
-    DFA d1 = DFA_question2();
-
-    printf("\n%d", DFA_execute(d1, test2));*/
-
     DFA d2 = DFA_question2();
-    char* test2 = "1010001";
-    printf("\n%d", DFA_execute(d2, test2));
+
+    printf("\n%d", DFA_execute(d2, test2));*/
+
+    DFA d3 = DFA_question3();
+    char* test3 = "00";
+    printf("%d\n", DFA_execute(d3, test3));
     return 0;
 }
 
