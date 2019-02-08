@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_SOURCE_DIR = /u/eajmal/CSC173/Project1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_BINARY_DIR = /u/eajmal/CSC173/Project1
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Project1.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/Project1.dir/flags.make
 
 CMakeFiles/Project1.dir/main.c.o: CMakeFiles/Project1.dir/flags.make
 CMakeFiles/Project1.dir/main.c.o: main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project1.dir/main.c.o"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/main.c.o   -c /u/eajmal/CSC173-Project-/Project1/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Project1.dir/main.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/main.c.o   -c /u/eajmal/CSC173/Project1/main.c
 
 CMakeFiles/Project1.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project1.dir/main.c.i"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173-Project-/Project1/main.c > CMakeFiles/Project1.dir/main.c.i
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173/Project1/main.c > CMakeFiles/Project1.dir/main.c.i
 
 CMakeFiles/Project1.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project1.dir/main.c.s"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173-Project-/Project1/main.c -o CMakeFiles/Project1.dir/main.c.s
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173/Project1/main.c -o CMakeFiles/Project1.dir/main.c.s
 
 CMakeFiles/Project1.dir/dfa.c.o: CMakeFiles/Project1.dir/flags.make
 CMakeFiles/Project1.dir/dfa.c.o: dfa.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Project1.dir/dfa.c.o"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/dfa.c.o   -c /u/eajmal/CSC173-Project-/Project1/dfa.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Project1.dir/dfa.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/dfa.c.o   -c /u/eajmal/CSC173/Project1/dfa.c
 
 CMakeFiles/Project1.dir/dfa.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project1.dir/dfa.c.i"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173-Project-/Project1/dfa.c > CMakeFiles/Project1.dir/dfa.c.i
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173/Project1/dfa.c > CMakeFiles/Project1.dir/dfa.c.i
 
 CMakeFiles/Project1.dir/dfa.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project1.dir/dfa.c.s"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173-Project-/Project1/dfa.c -o CMakeFiles/Project1.dir/dfa.c.s
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173/Project1/dfa.c -o CMakeFiles/Project1.dir/dfa.c.s
 
 CMakeFiles/Project1.dir/nfa.c.o: CMakeFiles/Project1.dir/flags.make
 CMakeFiles/Project1.dir/nfa.c.o: nfa.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Project1.dir/nfa.c.o"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/nfa.c.o   -c /u/eajmal/CSC173-Project-/Project1/nfa.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Project1.dir/nfa.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/nfa.c.o   -c /u/eajmal/CSC173/Project1/nfa.c
 
 CMakeFiles/Project1.dir/nfa.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project1.dir/nfa.c.i"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173-Project-/Project1/nfa.c > CMakeFiles/Project1.dir/nfa.c.i
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173/Project1/nfa.c > CMakeFiles/Project1.dir/nfa.c.i
 
 CMakeFiles/Project1.dir/nfa.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project1.dir/nfa.c.s"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173-Project-/Project1/nfa.c -o CMakeFiles/Project1.dir/nfa.c.s
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173/Project1/nfa.c -o CMakeFiles/Project1.dir/nfa.c.s
 
 CMakeFiles/Project1.dir/AdjMatrix.c.o: CMakeFiles/Project1.dir/flags.make
 CMakeFiles/Project1.dir/AdjMatrix.c.o: AdjMatrix.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Project1.dir/AdjMatrix.c.o"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/AdjMatrix.c.o   -c /u/eajmal/CSC173-Project-/Project1/AdjMatrix.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Project1.dir/AdjMatrix.c.o"
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Project1.dir/AdjMatrix.c.o   -c /u/eajmal/CSC173/Project1/AdjMatrix.c
 
 CMakeFiles/Project1.dir/AdjMatrix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Project1.dir/AdjMatrix.c.i"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173-Project-/Project1/AdjMatrix.c > CMakeFiles/Project1.dir/AdjMatrix.c.i
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /u/eajmal/CSC173/Project1/AdjMatrix.c > CMakeFiles/Project1.dir/AdjMatrix.c.i
 
 CMakeFiles/Project1.dir/AdjMatrix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Project1.dir/AdjMatrix.c.s"
-	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173-Project-/Project1/AdjMatrix.c -o CMakeFiles/Project1.dir/AdjMatrix.c.s
+	/usr/lib64/ccache/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /u/eajmal/CSC173/Project1/AdjMatrix.c -o CMakeFiles/Project1.dir/AdjMatrix.c.s
 
 # Object files for target Project1
 Project1_OBJECTS = \
@@ -125,7 +125,7 @@ Project1: CMakeFiles/Project1.dir/nfa.c.o
 Project1: CMakeFiles/Project1.dir/AdjMatrix.c.o
 Project1: CMakeFiles/Project1.dir/build.make
 Project1: CMakeFiles/Project1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Project1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Project1"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Project1.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +138,6 @@ CMakeFiles/Project1.dir/clean:
 .PHONY : CMakeFiles/Project1.dir/clean
 
 CMakeFiles/Project1.dir/depend:
-	cd /u/eajmal/CSC173-Project-/Project1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /u/eajmal/CSC173-Project-/Project1 /u/eajmal/CSC173-Project-/Project1 /u/eajmal/CSC173-Project-/Project1 /u/eajmal/CSC173-Project-/Project1 /u/eajmal/CSC173-Project-/Project1/CMakeFiles/Project1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /u/eajmal/CSC173/Project1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /u/eajmal/CSC173/Project1 /u/eajmal/CSC173/Project1 /u/eajmal/CSC173/Project1 /u/eajmal/CSC173/Project1 /u/eajmal/CSC173/Project1/CMakeFiles/Project1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Project1.dir/depend
 

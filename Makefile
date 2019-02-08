@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_SOURCE_DIR = /u/eajmal/CSC173/Project1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_BINARY_DIR = /u/eajmal/CSC173/Project1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173-Project-/Project1/CMakeFiles /u/eajmal/CSC173-Project-/Project1/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173/Project1/CMakeFiles /u/eajmal/CSC173/Project1/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173-Project-/Project1/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173/Project1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Project1
+# Target rules for targets named Project1.exe
 
 # Build rule for target.
-Project1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 Project1
-.PHONY : Project1
+Project1.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Project1.exe
+.PHONY : Project1.exe
 
 # fast build rule for target.
-Project1/fast:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/build
-.PHONY : Project1/fast
+Project1.exe/fast:
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/build
+.PHONY : Project1.exe/fast
 
 AdjMatrix.o: AdjMatrix.c.o
 
@@ -129,7 +129,7 @@ AdjMatrix.o: AdjMatrix.c.o
 
 # target to build an object file
 AdjMatrix.c.o:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/AdjMatrix.c.o
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/AdjMatrix.c.o
 .PHONY : AdjMatrix.c.o
 
 AdjMatrix.i: AdjMatrix.c.i
@@ -138,7 +138,7 @@ AdjMatrix.i: AdjMatrix.c.i
 
 # target to preprocess a source file
 AdjMatrix.c.i:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/AdjMatrix.c.i
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/AdjMatrix.c.i
 .PHONY : AdjMatrix.c.i
 
 AdjMatrix.s: AdjMatrix.c.s
@@ -147,7 +147,7 @@ AdjMatrix.s: AdjMatrix.c.s
 
 # target to generate assembly for a file
 AdjMatrix.c.s:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/AdjMatrix.c.s
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/AdjMatrix.c.s
 .PHONY : AdjMatrix.c.s
 
 dfa.o: dfa.c.o
@@ -156,7 +156,7 @@ dfa.o: dfa.c.o
 
 # target to build an object file
 dfa.c.o:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/dfa.c.o
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/dfa.c.o
 .PHONY : dfa.c.o
 
 dfa.i: dfa.c.i
@@ -165,7 +165,7 @@ dfa.i: dfa.c.i
 
 # target to preprocess a source file
 dfa.c.i:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/dfa.c.i
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/dfa.c.i
 .PHONY : dfa.c.i
 
 dfa.s: dfa.c.s
@@ -174,7 +174,7 @@ dfa.s: dfa.c.s
 
 # target to generate assembly for a file
 dfa.c.s:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/dfa.c.s
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/dfa.c.s
 .PHONY : dfa.c.s
 
 main.o: main.c.o
@@ -183,7 +183,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/main.c.o
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -192,7 +192,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/main.c.i
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -201,7 +201,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/main.c.s
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/main.c.s
 .PHONY : main.c.s
 
 nfa.o: nfa.c.o
@@ -210,7 +210,7 @@ nfa.o: nfa.c.o
 
 # target to build an object file
 nfa.c.o:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/nfa.c.o
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/nfa.c.o
 .PHONY : nfa.c.o
 
 nfa.i: nfa.c.i
@@ -219,7 +219,7 @@ nfa.i: nfa.c.i
 
 # target to preprocess a source file
 nfa.c.i:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/nfa.c.i
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/nfa.c.i
 .PHONY : nfa.c.i
 
 nfa.s: nfa.c.s
@@ -228,7 +228,7 @@ nfa.s: nfa.c.s
 
 # target to generate assembly for a file
 nfa.c.s:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/nfa.c.s
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/nfa.c.s
 .PHONY : nfa.c.s
 
 # Help Target
@@ -238,7 +238,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... Project1"
+	@echo "... Project1.exe"
 	@echo "... edit_cache"
 	@echo "... AdjMatrix.o"
 	@echo "... AdjMatrix.i"

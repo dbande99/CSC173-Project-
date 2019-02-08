@@ -1,3 +1,0 @@
-/u/eajmal/CSC173-Project-/Project1/CMakeFiles/rebuild_cache.dir
-/u/eajmal/CSC173-Project-/Project1/CMakeFiles/Project1.dir
-/u/eajmal/CSC173-Project-/Project1/CMakeFiles/edit_cache.dir

@@ -54,45 +54,45 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_SOURCE_DIR = /u/eajmal/CSC173/Project1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /u/eajmal/CSC173-Project-/Project1
+CMAKE_BINARY_DIR = /u/eajmal/CSC173/Project1
 
 #=============================================================================
-# Target rules for target CMakeFiles/Project1.dir
+# Target rules for target CMakeFiles/Project1.exe.dir
 
 # All Build rule for target.
-CMakeFiles/Project1.dir/all:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/depend
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/u/eajmal/CSC173-Project-/Project1/CMakeFiles --progress-num=1,2,3,4,5 "Built target Project1"
-.PHONY : CMakeFiles/Project1.dir/all
+CMakeFiles/Project1.exe.dir/all:
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/depend
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/u/eajmal/CSC173/Project1/CMakeFiles --progress-num=1,2,3,4,5 "Built target Project1.exe"
+.PHONY : CMakeFiles/Project1.exe.dir/all
 
 # Include target in all.
-all: CMakeFiles/Project1.dir/all
+all: CMakeFiles/Project1.exe.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Project1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173-Project-/Project1/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Project1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173-Project-/Project1/CMakeFiles 0
-.PHONY : CMakeFiles/Project1.dir/rule
+CMakeFiles/Project1.exe.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173/Project1/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Project1.exe.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /u/eajmal/CSC173/Project1/CMakeFiles 0
+.PHONY : CMakeFiles/Project1.exe.dir/rule
 
 # Convenience name for target.
-Project1: CMakeFiles/Project1.dir/rule
+Project1.exe: CMakeFiles/Project1.exe.dir/rule
 
-.PHONY : Project1
-
-# clean rule for target.
-CMakeFiles/Project1.dir/clean:
-	$(MAKE) -f CMakeFiles/Project1.dir/build.make CMakeFiles/Project1.dir/clean
-.PHONY : CMakeFiles/Project1.dir/clean
+.PHONY : Project1.exe
 
 # clean rule for target.
-clean: CMakeFiles/Project1.dir/clean
+CMakeFiles/Project1.exe.dir/clean:
+	$(MAKE) -f CMakeFiles/Project1.exe.dir/build.make CMakeFiles/Project1.exe.dir/clean
+.PHONY : CMakeFiles/Project1.exe.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Project1.exe.dir/clean
 
 .PHONY : clean
 

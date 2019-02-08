@@ -1,0 +1,1 @@
+/usr/lib64/ccache/cc    CMakeFiles/Project1.exe.dir/main.c.o CMakeFiles/Project1.exe.dir/dfa.c.o CMakeFiles/Project1.exe.dir/nfa.c.o CMakeFiles/Project1.exe.dir/AdjMatrix.c.o  -o Project1.exe 
