@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+limits.h
+-
+dfa.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
+
+/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
+stdbool.h
+-
+
+/home/ehab/Desktop/CSC173/CSC173-Project-/main.c
+stdlib.h
+-
+stdio.h
+-
+limits.h
+-
+stdbool.h
+-
+dfa.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
+
+/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c
+nfa.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
+
+/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
+stdbool.h
+-
+

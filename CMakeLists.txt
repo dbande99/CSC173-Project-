@@ -1,6 +1,14 @@
-cmake_minimum_required(VERSION 3.11)
-project(Project1 C)
+cmake_minimum_required(VERSION 3.13)
+project(CSC173_Project_)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Project1 main.c dfa.c nfa.c nfa.h AdjMatrix.c AdjMatrix.h dfa.h)
+include_directories(.)
+
+add_executable(CSC173_Project_
+        CMakeLists.txt
+        dfa.c
+        dfa.h
+        main.c
+        nfa.c
+        nfa.h)

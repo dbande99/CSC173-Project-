@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/CSC173_Project_.dir/dfa.c.o CMakeFiles/CSC173_Project_.dir/main.c.o CMakeFiles/CSC173_Project_.dir/nfa.c.o  -o CSC173_Project_ 

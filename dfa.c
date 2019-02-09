@@ -5,70 +5,82 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
-#include "AdjMatrix.h"
 #include "dfa.h"
 
 #define REJECT -1
 
+int** new_matrix(int states)
+{
+    int** matrix = (int**) malloc(states * sizeof(int*));
+    for(int i =0; i < states; i++)
+    {
+        matrix[i] = (int*) malloc(states * sizeof(int));
+
+        for(int j = 0; j < states; j++)
+        {
+            matrix[i][j] = INT_MIN;
+        }
+    }
+    return matrix;
+}
+
+
 DFA new_DFA(int states)
 {
-    DFA dfa = (DFA) malloc(sizeof(DFA));
-    dfa->size = states;
-    dfa->current_state = 0;
-    dfa->matrix = new_matrix(states);
-    return dfa;
+    //Allocate for DFA and matrix
+    DFA d = (DFA) malloc(sizeof(DFA) + sizeof(int**));
+
+    d->size = states;
+    d->current_state = 0;
+    d->matrix = new_matrix(states);
+
+    return d;
 }
 
-void DFA_free(DFA dfa)
+void DFA_free(DFA d)
 {
-    free_matrix(&(dfa->matrix));
-    free(dfa);
+    for(int i=0; i < d->size; i++) {
+        free(d->matrix[i]);
+    }
+    free(d->matrix);
+    free(d);
 }
 
-int DFA_get_size(DFA dfa)
-{
-    return dfa->size;
-}
 
-int get_current_state(DFA dfa)
-{
-    return dfa->current_state;
-}
-
-void DFA_get_transition(DFA dfa, char symb)
+void DFA_get_transition(DFA d, char symb)
 {
     //If intMax, means loop on self
-    if(dfa->matrix.matrix[dfa->current_state][dfa->current_state] == INT_MAX)
+    if(d->matrix[d->current_state][d->current_state] == INT_MAX)
     {
         return;
     }
-    for(int i = 0; i < dfa->size; i++)
+    for(int i = 0; i < d->size; i++)
     {
         //i represents next state
-        //printf("%d %d %c %c \n", dfa->current_state, i, dfa->matrix.matrix[dfa->current_state][i], symb);
-        if(symb == dfa->matrix.matrix[dfa->current_state][i])
+        //printf("%d %d %c %c \n", d->current_state, i, d->matrix.matrix[d->current_state][i], symb);
+        if(symb == d->matrix[d->current_state][i])
         {
-            dfa->current_state = i;
+            d->current_state = i;
             break;
         }
         //did not find transition
-        else if(i == dfa->size - 1)
+        else if(i == d->size - 1)
         {
-            //printf("%d %c \n", dfa->current_state, symb);
-            dfa -> current_state = REJECT;
+            //printf("%d %c \n", d->current_state, symb);
+            d -> current_state = REJECT;
         }
     }
 
 }
 
-bool DFA_execute(DFA dfa, char *input)
+bool DFA_execute(DFA d, char *input)
 {
     int length = strlen(input);
     for(int i = 0; i < length; i++)
     {
-        if(dfa->current_state != REJECT)
+        if(d->current_state != REJECT)
         {
-            DFA_get_transition(dfa, input[i]);
+            DFA_get_transition(d, input[i]);
         }
         else
         {
@@ -76,6 +88,6 @@ bool DFA_execute(DFA dfa, char *input)
         }
 
     }
-    //printf("%d", dfa->current_state);
-    return (dfa->current_state+1) == dfa->size;
+    //printf("%d", d->current_state);
+    return (d->current_state+1) == d->size;
 }

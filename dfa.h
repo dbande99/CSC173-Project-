@@ -7,9 +7,8 @@
 
 #ifndef _dfa_h
 #define _dfa_h
-
 #include <stdbool.h>
-#include "AdjMatrix.h"
+
 
 /**
  * The data structure used to represent a deterministic finite automaton.
@@ -22,11 +21,11 @@ typedef struct DFA
 {
     int size;
     int current_state;
-    AdjMatrix matrix;
-    //2D array
-}*DFA;
+    int** matrix;
+} *DFA;
 
 
+int** new_matrix(int states);
 /**
  * Allocate and return a new DFA containing the given number of states.
  */
