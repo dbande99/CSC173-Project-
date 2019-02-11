@@ -16,12 +16,14 @@
 NFA new_NFA(int nstates)
 {
     NFA nfa = (NFA) malloc(sizeof(NFA) + sizeof(int**) + sizeof(int*));
+
     nfa->size = nstates;
     /*Multiple current states instead of one
      *EMPTY means currently not in that state
      *e.g. {0, EMPTY, EMPTY, 3, 4}
      *Less efficient than a list but faster to implement
     */
+
     nfa->states = initArr(nstates);
     nfa->states[0] = 0;
 

@@ -6,20 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c
-stdlib.h
--
-stdio.h
--
-string.h
--
-limits.h
--
-nfa.h
-/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
-dfa.h
-/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
-
 /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
 nfa.h
 /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h

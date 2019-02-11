@@ -38,6 +38,32 @@ DFA DFA_question3()
 
     return dfa;
 }
+DFA DFA_question4()
+{
+    DFA dfa = new_DFA(9);
+    //All 0 transitions
+    dAdd(dfa, 0, 1, '0');
+    dAdd(dfa, 1, 3, '0');
+    dAdd(dfa, 2, 5, '0');
+    dAdd(dfa, 3, 1, '0');
+    dAdd(dfa, 4, 6, '0');
+    dAdd(dfa, 5, 7, '0');
+    dAdd(dfa, 6, 8, '0');
+    dAdd(dfa, 7, 5, '0');
+    dAdd(dfa, 8, 6, '0');
+    //All 1 transitions
+    dAdd(dfa, 0, 2, '1');
+    dAdd(dfa, 1, 5, '1');
+    dAdd(dfa, 2, 4, '1');
+    dAdd(dfa, 3, 7, '1');
+    dAdd(dfa, 4, 2, '1');
+    dAdd(dfa, 5, 6, '1');
+    dAdd(dfa, 6, 5, '1');
+    dAdd(dfa, 7, 8, '1');
+    dAdd(dfa, 8, 7, '1');
+
+    return dfa;
+}
 NFA NFA_question1()
 {
     NFA nfa = new_NFA(5);
@@ -58,8 +84,7 @@ NFA NFA_question2()
 }
 int main()
 {
-
-    char* test1 = "csc173";
+    /*char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
     printf("%d\n",DFA_execute(d1,test1));
@@ -69,16 +94,22 @@ int main()
 
     printf("%d\n", DFA_execute(d2, test2));
 
-    char* test3 = "001100111";
+    char* test3 = "001101";
     DFA d3 = DFA_question3();
 
-    printf("%d\n", DFA_execute(d3, test3));
+    printf("%d\n", DFA_execute(d3, test3));*/
 
-    DFA_free(d1);
+    char* test10 = "1010";
+    DFA d10 = DFA_question4();
+
+    printf("Tester %d\n", DFA_execute(d10, test10));
+
+    /*DFA_free(d1);
     DFA_free(d2);
     DFA_free(d3);
+    DFA_free(d10);
 
-    char* test4 = "aacode";
+    char* test4 = "codeaa";
     NFA n1 = NFA_question1();
     printf("%d\n", NFA_execute(n1, test4));
 
@@ -91,7 +122,7 @@ int main()
     //printf("%d\n", DFA_execute(DFAtoNFA(n2), test5));
 
     nFree(n1);
-    nFree(n2);
+    nFree(n2);*/
 
     return 0;
 }

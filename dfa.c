@@ -14,53 +14,40 @@
 
 DFA NFAtoDFA(NFA nfa)
 {
-    DFA d = new_DFA(nSize(nfa));
-    d->matrix = copyOfMatrix(nfa);
+    DFA dfa = new_DFA(nSize(nfa));
+    dfa->matrix = copyOfMatrix(nfa);
 
-
-    return d;
+    return dfa;
 }
 
 DFA new_DFA(int states)
 {
-    DFA d = (DFA) malloc(sizeof(DFA) + sizeof(int**));
+    DFA dfa = (DFA) malloc(sizeof(DFA) + sizeof(int**));
 
-    d->size = states;
-    d->current_state = 0;
-    d->matrix = new_matrix(states);
+    dfa->size = states;
+    dfa->current_state = 0;
+    dfa->matrix = new_matrix(states);
 
-    return d;
+    return dfa;
 }
-
-
-
 
 void DFA_get_transition(DFA dfa, char sym)
 {
-    //If intMax, means loop on self
     if(dfa->matrix[dState(dfa)][dState(dfa)] == LOOP)
     {
         return;
     }
     for(int transition = 0; transition < dSize(dfa); transition++)
     {
-        //printf("%dfa %dfa %c %c \n", dfa->states, transition, dfa->matrix.matrix[dfa->states][transition], symb);
         if(dfa->matrix[dState(dfa)][transition] == sym)
         {
             dSetState(dfa, transition);
             break;
         }
-        //LOOP - sym means loop on all but that symbol
-        else if(dfa->matrix[dState(dfa)][transition] != EMPTY && dfa->matrix[dState(dfa)][transition] != LOOP)
-        {
-            if(LOOP - dfa->matrix[dState(dfa)][transition] != sym)
-            {
-                dSetState(dfa, transition);
-            }
-        }
-            //did not find transition
+        //Did not find transition
         else if(transition == dSize(dfa) - 1)
         {
+
             dSetState(dfa, REJECT);
         }
     }
@@ -93,6 +80,7 @@ void dSetState(DFA dfa, int state)
 {
     dfa->current_state = state;
 }
+
 void dAdd(DFA dfa, int src, int dst, int sym)
 {
     dfa->matrix[src][dst] = sym;
@@ -105,6 +93,7 @@ void dAdds(DFA dfa, char *str)
         dAdd(dfa, i, i+1, str[i]);
     }
 }
+
 int** new_matrix(int states)
 {
     int** matrix = (int**) malloc(states * sizeof(int*));
