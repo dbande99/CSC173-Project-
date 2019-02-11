@@ -77,5 +77,4 @@ extern bool NFA_execute(NFA n, char *input);
  * Print the given NFA to System.out.
  */
 extern void NFA_print(NFA nfa);
-
 #endif

@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "nfa.h"
-//MAKE NEW MATRIX ITS OWN HEADER FILE
-#include "dfa.h"
 
+#include "nfa.h"
+#include "dfa.h"
+#define LOOP INT_MAX
+#define EMPTY INT_MIN
 NFA new_NFA(int nstates)
 {
     //Allocate for DFA and matrix
@@ -16,6 +17,11 @@ NFA new_NFA(int nstates)
 
     n->size = nstates;
     n->current_state = malloc(nstates * sizeof(int));
+    n->current_state[0] = 0;
+    for(int i = 1; i < nstates; i++)
+    {
+        n->current_state[i] = EMPTY;
+    }
     n->matrix = new_matrix(nstates);
 
     return n;
@@ -34,32 +40,54 @@ void NFA_free(NFA n)
 
 void NFA_get_transitions(NFA n, char sym)
 {
-    //For all current states
-    for(int z = 0; z < n->size; z++)
+    int* newstates = (int*) malloc(n->size * sizeof(int));
+    for(int i = 0; i < n->size; i++)
+    {
+        newstates[i] = EMPTY;
+    }
+    int transition = 0;
+    //For all states
+    for(int s = 0; s < n->size; s++)
     {
         //If intMax, means loop on self
-        if (n->matrix[z][z] == INT_MAX)
+        /*if (n->matrix[z][z] == LOOP)
         {
             continue;
-        }
+        }*/
 
-        for (int i = 0; i < n->size; i++)
+        if(n->current_state[s] != EMPTY)
         {
-            //i represents next state
-            //printf("%n %n %c %c \n", n->current_state, i, n->matrix.matrix[n->current_state][i], symb);
-            if (sym == n->matrix[z][i])
+            //For all transitions
+            for (int t = 0; t < n->size; t++)
             {
-                n->current_state[z] = i;
-                break;
-            }
-            //Did not find transition, reject state
-            if (i == n->size - 1)
-            {
-                //printf("%n %c \n", n->current_state, symb);
-                n->current_state[z] = INT_MIN;
+                //i represents next state
+                if (n->matrix[s][t] == sym)
+                {
+                    newstates[t] = t;
+                    transition++;
+                }
+                if(n->matrix[s][t] == LOOP)
+                {
+                    newstates[s] = s;
+                    transition++;
+                }
+
+                //Did not find transition, reject state
+                if (!transition && t == n->size - 1)
+                {
+                    //printf("%n %c \n", n->current_state, symb);
+                    newstates[s] = EMPTY;
+                }
             }
         }
+        transition = 0;
     }
+
+    for(int i = 0; i < n->size; i++)
+    {
+        n->current_state[i] = newstates[i];
+    }
+    free(newstates);
 }
 
 bool NFA_execute(NFA n, char *input)
@@ -76,6 +104,7 @@ bool NFA_execute(NFA n, char *input)
     //If any state is accepting, return true else false
 
     for(int i = 0; i < n->size; i++) {
+        //printf("State %d %d\n", i, n->current_state[i]);
         if (n->current_state[i] + 1 == n->size) {
             return true;
         }

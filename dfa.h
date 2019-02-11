@@ -4,7 +4,7 @@
  * Created: Thu Sep  1 17:45:52 2016
  * Time-stamp: <Tue Aug  8 11:30:46 EDT 2017 ferguson>
  */
-
+#include "nfa.h"
 #ifndef _dfa_h
 #define _dfa_h
 #include <stdbool.h>
@@ -24,8 +24,10 @@ typedef struct DFA
     int** matrix;
 } *DFA;
 
+extern DFA DFAtoNFA(NFA n);
 
-int** new_matrix(int states);
+
+extern int** new_matrix(int states);
 /**
  * Allocate and return a new DFA containing the given number of states.
  */
@@ -86,6 +88,7 @@ extern bool DFA_execute(DFA dfa, char *input);
  * Print the given DFA to System.out.
  */
 extern void DFA_print(DFA dfa);
+
 
 #endif
 

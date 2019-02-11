@@ -3,6 +3,7 @@
 
 CMakeFiles/CSC173_Project_.dir/dfa.c.o: dfa.c
 CMakeFiles/CSC173_Project_.dir/dfa.c.o: dfa.h
+CMakeFiles/CSC173_Project_.dir/dfa.c.o: nfa.h
 
 CMakeFiles/CSC173_Project_.dir/main.c.o: dfa.h
 CMakeFiles/CSC173_Project_.dir/main.c.o: main.c

@@ -5,6 +5,9 @@
 #include "dfa.h"
 #include "nfa.h"
 
+/* IMPLEMENT OTHER FUNCTIONS IN DFA.H AND NFA.H
+ *
+ */
 DFA DFA_question1()
 {
     DFA d = new_DFA(7);
@@ -51,11 +54,29 @@ NFA NFA_question1()
     NFA n = new_NFA(5);
     //Loop back
     n->matrix[0][0] = INT_MAX;
+
     //General input
     n->matrix[0][1] = 'c';
     n->matrix[1][2] = 'o';
     n->matrix[2][3] = 'd';
     n->matrix[3][4] = 'e';
+    return n;
+}
+NFA NFA_question2()
+{
+    NFA n = new_NFA(5);
+    //Loop back
+    n->matrix[0][0] = INT_MAX;
+    n->matrix[4][4] = INT_MAX;
+
+    //General input
+    n->matrix[0][1] = 'c';
+    n->matrix[1][2] = 'o';
+    n->matrix[2][3] = 'd';
+    n->matrix[3][4] = 'e';
+
+
+
     return n;
 }
 int main()
@@ -80,12 +101,22 @@ int main()
     DFA_free(d2);
     DFA_free(d3);*/
 
-    char* test4 = "sdadsadcode";
+    char* test4 = "acode";
 
     NFA n1 = NFA_question1();
 
     printf("%d\n", NFA_execute(n1, test4));
 
+
+
+    //printf("%d\n", DFA_execute(DFAtoNFA(n1), test4));
+    char* test5 = "ade";
+
+    NFA n2 = NFA_question2();
+    printf("%d\n", NFA_execute(n2, test5));
+   // printf("%d\n", DFA_execute(DFAtoNFA(n2), test5));*/
     return 1;
+
+
 }
 
