@@ -11,70 +11,54 @@
  */
 DFA DFA_question1()
 {
-    DFA d = new_DFA(7);
-    char* lang = "csc173";
-    //Sets transition edges to "c" "s" ...
-    //[0][1] = "c", [1][2] = "s" ...
-    for(int i =0; i<6; i++)
-    {
-        d->matrix[i][i+1] = lang[i];
-    }
-    return d;
+    DFA dfa = new_DFA(7);
+    dAdds(dfa, "csc173");
+    return dfa;
 }
 
 DFA DFA_question2()
 {
-    DFA d = new_DFA(4);
-    char* lang = "cat";
-    //Same as question 1
-    for(int i = 0; i < 3; i++)
-    {
-        d->matrix[i][i+1] = lang[i];
-    }
+    DFA dfa = new_DFA(4);
+    dAdds(dfa, "cat");
     //Loop on self once "cat" is seen at start
-    d->matrix[3][3] = INT_MAX;
-    return d;
+    dAdd(dfa, 3, 3, LOOP);
+    return dfa;
 }
 DFA DFA_question3()
 {
-    DFA d = new_DFA(3);
-    //Lowest even is two zeros 
+    DFA dfa = new_DFA(3);
+    //Lowest even is two zeros
+    dAdds(dfa, "00");
     //Go back if another zero
-    d->matrix[0][1] = '0';
-    d->matrix[1][2] = '0';
-    d->matrix[2][1] = '0';
+    dAdd(dfa, 2, 1, '0');
     //Loop on ones
-    d->matrix[0][0] = '1';
-    d->matrix[1][1] = '1';
-    d->matrix[2][2] = '1';
+    dAdd(dfa, 0, 0, '1');
+    dAdd(dfa, 1, 1, '1');
+    dAdd(dfa, 2, 2, '1');
 
-    return d;
+    return dfa;
 }
 NFA NFA_question1()
 {
-    NFA n = new_NFA(5);
-    nAdd(n, 0, 0, LOOP);
-    nAdds(n, "code");
+    NFA nfa = new_NFA(5);
+    nAdd(nfa, 0, 0, LOOP);
+    nAdds(nfa, "code");
 
-    return n;
+    return nfa;
 }
 NFA NFA_question2()
 {
-    NFA n = new_NFA(5);
+    NFA nfa = new_NFA(5);
     //Loop back
-    nAdd(n, 0, 0, LOOP);
-    nAdd(n, 4, 4, LOOP);
-
+    nAdd(nfa, 0, 0, LOOP);
+    nAdd(nfa, 4, 4, LOOP);
     //General input
-    nAdds(n, "code");
-
-
-
-    return n;
+    nAdds(nfa, "code");
+    return nfa;
 }
 int main()
 {
-    /*
+
     char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
@@ -92,13 +76,11 @@ int main()
 
     DFA_free(d1);
     DFA_free(d2);
-    DFA_free(d3);*/
+    DFA_free(d3);
 
     char* test4 = "aacode";
     NFA n1 = NFA_question1();
     printf("%d\n", NFA_execute(n1, test4));
-
-
 
     //printf("%d\n", DFA_execute(DFAtoNFA(n1), test4));
 
@@ -112,7 +94,5 @@ int main()
     nFree(n2);
 
     return 0;
-
-
 }
 

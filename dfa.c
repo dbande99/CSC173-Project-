@@ -12,6 +12,99 @@
 #define LOOP INT_MAX
 #define EMPTY INT_MIN
 
+DFA NFAtoDFA(NFA nfa)
+{
+    DFA d = new_DFA(nSize(nfa));
+    d->matrix = copyOfMatrix(nfa);
+
+
+    return d;
+}
+
+DFA new_DFA(int states)
+{
+    DFA d = (DFA) malloc(sizeof(DFA) + sizeof(int**));
+
+    d->size = states;
+    d->current_state = 0;
+    d->matrix = new_matrix(states);
+
+    return d;
+}
+
+
+
+
+void DFA_get_transition(DFA dfa, char sym)
+{
+    //If intMax, means loop on self
+    if(dfa->matrix[dState(dfa)][dState(dfa)] == LOOP)
+    {
+        return;
+    }
+    for(int transition = 0; transition < dSize(dfa); transition++)
+    {
+        //printf("%dfa %dfa %c %c \n", dfa->states, transition, dfa->matrix.matrix[dfa->states][transition], symb);
+        if(dfa->matrix[dState(dfa)][transition] == sym)
+        {
+            dSetState(dfa, transition);
+            break;
+        }
+        //LOOP - sym means loop on all but that symbol
+        else if(dfa->matrix[dState(dfa)][transition] != EMPTY && dfa->matrix[dState(dfa)][transition] != LOOP)
+        {
+            if(LOOP - dfa->matrix[dState(dfa)][transition] != sym)
+            {
+                dSetState(dfa, transition);
+            }
+        }
+            //did not find transition
+        else if(transition == dSize(dfa) - 1)
+        {
+            dSetState(dfa, REJECT);
+        }
+    }
+}
+
+int DFA_execute(DFA dfa, char *input)
+{
+    int length = strlen(input);
+    for(int i = 0; i < length; i++)
+    {
+        if(dState(dfa) != REJECT)
+        {
+            DFA_get_transition(dfa, input[i]);
+        }
+    }
+    return dState(dfa)+1 == dSize(dfa);
+}
+
+int dSize(DFA dfa)
+{
+    return dfa->size;
+}
+
+int dState(DFA dfa)
+{
+    return dfa->current_state;
+}
+
+void dSetState(DFA dfa, int state)
+{
+    dfa->current_state = state;
+}
+void dAdd(DFA dfa, int src, int dst, int sym)
+{
+    dfa->matrix[src][dst] = sym;
+}
+
+void dAdds(DFA dfa, char *str)
+{
+    for(int i = 0; i < strlen(str); i++)
+    {
+        dAdd(dfa, i, i+1, str[i]);
+    }
+}
 int** new_matrix(int states)
 {
     int** matrix = (int**) malloc(states * sizeof(int*));
@@ -41,27 +134,6 @@ int** copyOfMatrix(NFA n)
     return matrix;
 }
 
-DFA DFAtoNFA(NFA n)
-{
-    DFA d = new_DFA(n->size);
-    d->matrix = copyOfMatrix(n);
-
-
-    return d;
-}
-
-DFA new_DFA(int states)
-{
-    //Allocate for DFA and matrix
-    DFA d = (DFA) malloc(sizeof(DFA) + sizeof(int**));
-
-    d->size = states;
-    d->current_state = 0;
-    d->matrix = new_matrix(states);
-
-    return d;
-}
-
 void DFA_free(DFA d)
 {
     for(int i=0; i < d->size; i++)
@@ -70,59 +142,4 @@ void DFA_free(DFA d)
     }
     free(d->matrix);
     free(d);
-}
-
-
-void DFA_get_transition(DFA d, char sym)
-{
-    //If intMax, means loop on self
-    if(d->matrix[d->current_state][d->current_state] == LOOP)
-    {
-        return;
-    }
-    for(int i = 0; i < d->size; i++)
-    {
-        //i represents next state
-        //printf("%d %d %c %c \n", d->states, i, d->matrix.matrix[d->states][i], symb);
-        if(sym == d->matrix[d->current_state][i])
-        {
-            d->current_state = i;
-            break;
-        }
-        //INT_MAX - character means loop on all but that character
-        else if(d->matrix[d->current_state][i] != EMPTY && d->matrix[d->current_state][i] != LOOP)
-        {
-            if(LOOP - d->matrix[d->current_state][i] != sym)
-            {
-                d->current_state = i;
-            }
-        }
-            //did not find transition
-        else if(i == d->size - 1)
-        {
-            //printf("%d %c \n", d->states, symb);
-            d -> current_state = REJECT;
-        }
-    }
-
-}
-
-bool DFA_execute(DFA d, char *input)
-{
-    int length = strlen(input);
-    for(int i = 0; i < length; i++)
-    {
-        if(d->current_state != REJECT)
-        {
-            DFA_get_transition(d, input[i]);
-            printf("%d\n", d->current_state);
-        }
-        else
-        {
-            break;
-        }
-
-    }
-    //printf("%d", d->states);
-    return (d->current_state+1) == d->size;
 }

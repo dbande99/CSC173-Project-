@@ -7,7 +7,6 @@
 #include "nfa.h"
 #ifndef _dfa_h
 #define _dfa_h
-#include <stdbool.h>
 
 
 /**
@@ -24,7 +23,7 @@ typedef struct DFA
     int** matrix;
 } *DFA;
 
-extern DFA DFAtoNFA(NFA n);
+extern DFA NFAtoDFA(NFA n);
 
 
 extern int** new_matrix(int states);
@@ -41,7 +40,7 @@ extern void DFA_free(DFA dfa);
 /**
  * Return the number of states in the given DFA.
  */
-extern int DFA_get_size(DFA dfa);
+extern int dSize(DFA dfa);
 
 /**
  * Return the state specified by the given DFA's transition function from
@@ -53,41 +52,22 @@ extern void DFA_get_transition(DFA dfa, char sym);
  * For the given DFA, set the transition from state src on input symbol
  * sym to be the state dst.
  */
-extern void DFA_set_transition(DFA dfa, int src, char sym, int dst);
+extern void dAdd(DFA dfa, int src, int dst, int sym);
 
 /**
  * Set the transitions of the given DFA for each symbol in the given str.
  * This is a nice shortcut when you have multiple labels on an edge between
  * two states.
  */
-extern void DFA_set_transition_str(DFA dfa, int src, char *str, int dst);
+extern void dAdds(DFA dfa, char *str);
 
-/**
- * Set the transitions of the given DFA for all input symbols.
- * Another shortcut method.
- */
-extern void DFA_set_transition_all(DFA dfa, int src, int dst);
+extern int dState(DFA dfa);
 
-/**
- * Set whether the given DFA's state is accepting or not.
- */
-extern void DFA_set_accepting(DFA dfa, int state, bool value);
+extern void dSetState(DFA dfa, int state);
 
-/**
- * Return true if the given DFA's state is an accepting state.
- */
-extern bool DFA_get_accepting(DFA dfa, int state);
+extern int DFA_execute(DFA dfa, char *input);
 
-/**
- * Run the given DFA on the given input string, and return true if it accepts
- * the input, otherwise false.
- */
-extern bool DFA_execute(DFA dfa, char *input);
-
-/**
- * Print the given DFA to System.out.
- */
-extern void DFA_print(DFA dfa);
+extern int** copyOfMatrix(NFA n);
 
 
 #endif
