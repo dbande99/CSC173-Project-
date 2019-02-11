@@ -3,6 +3,7 @@
 #include <limits.h>
 #include <stdbool.h>
 #include "dfa.h"
+#include "nfa.h"
 
 DFA DFA_question1()
 {
@@ -45,9 +46,21 @@ DFA DFA_question3()
 
     return d;
 }
-
+NFA NFA_question1()
+{
+    NFA n = new_NFA(5);
+    //Loop back
+    n->matrix[0][0] = INT_MAX;
+    //General input
+    n->matrix[0][1] = 'c';
+    n->matrix[1][2] = 'o';
+    n->matrix[2][3] = 'd';
+    n->matrix[3][4] = 'e';
+    return n;
+}
 int main()
 {
+    /*
     char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
@@ -58,14 +71,20 @@ int main()
 
     printf("%d\n", DFA_execute(d2, test2));
 
-    char* test3 = "0110";
+    char* test3 = "001100111";
     DFA d3 = DFA_question3();
 
     printf("%d\n", DFA_execute(d3, test3));
 
     DFA_free(d1);
     DFA_free(d2);
-    DFA_free(d3);
+    DFA_free(d3);*/
+
+    char* test4 = "sdadsadcode";
+
+    NFA n1 = NFA_question1();
+
+    printf("%d\n", NFA_execute(n1, test4));
 
     return 1;
 }

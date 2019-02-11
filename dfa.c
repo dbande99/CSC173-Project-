@@ -12,7 +12,8 @@
 int** new_matrix(int states)
 {
     int** matrix = (int**) malloc(states * sizeof(int*));
-    for(int i =0; i < states; i++)
+
+    for(int i = 0; i < states; i++)
     {
         matrix[i] = (int*) malloc(states * sizeof(int));
 
@@ -47,7 +48,7 @@ void DFA_free(DFA d)
 }
 
 
-void DFA_get_transition(DFA d, char symb)
+void DFA_get_transition(DFA d, char sym)
 {
     //If intMax, means loop on self
     if(d->matrix[d->current_state][d->current_state] == INT_MAX)
@@ -58,7 +59,7 @@ void DFA_get_transition(DFA d, char symb)
     {
         //i represents next state
         //printf("%d %d %c %c \n", d->current_state, i, d->matrix.matrix[d->current_state][i], symb);
-        if(symb == d->matrix[d->current_state][i])
+        if(sym == d->matrix[d->current_state][i])
         {
             d->current_state = i;
             break;

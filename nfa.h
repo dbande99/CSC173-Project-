@@ -14,7 +14,11 @@
  * @see FOCS Section 10.3
  * @see Comments for DFA in dfa.h
  */
-typedef struct NFA *NFA;
+typedef struct NFA {
+    int size;
+    int* current_state;
+    int** matrix;
+} *NFA;
 
 /**
  * Allocate and return a new NFA containing the given number of states.
@@ -35,7 +39,7 @@ extern int NFA_get_size(NFA nfa);
  * Return the set of next states specified by the given NFA's transition
  * function from the given state on input symbol sym.
  */
-extern int** NFA_get_transitions(NFA nfa, int state, char sym);
+extern void NFA_get_transitions(NFA n, char sym);
 
 /**
  * For the given NFA, add the state dst to the set of next states from
@@ -67,7 +71,7 @@ extern bool NFA_get_accepting(NFA nfa, int state);
  * Run the given NFA on the given input string, and return true if it accepts
  * the input, otherwise false.
  */
-extern bool NFA_execute(NFA nfa, char *input);
+extern bool NFA_execute(NFA n, char *input);
 
 /**
  * Print the given NFA to System.out.
