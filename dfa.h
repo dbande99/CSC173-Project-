@@ -35,7 +35,7 @@ extern DFA new_DFA(int nstates);
 /**
  * Free the given DFA.
  */
-extern void DFA_free(DFA dfa);
+extern void dFree(DFA dfa);
 
 /**
  * Return the number of states in the given DFA.

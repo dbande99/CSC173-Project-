@@ -39,13 +39,22 @@ void DFA_get_transition(DFA dfa, char sym)
     }
     for(int transition = 0; transition < dSize(dfa); transition++)
     {
+        //sym * -1 means loop on all but this sym
+        if(dfa->matrix[dState(dfa)][transition] < 0 && dfa->matrix[dState(dfa)][transition] != EMPTY)
+        {
+            if(dfa->matrix[dState(dfa)][transition] != sym * -1)
+            {
+                return;
+            }
+        }
+
         if(dfa->matrix[dState(dfa)][transition] == sym)
         {
             dSetState(dfa, transition);
             break;
         }
         //Did not find transition
-        else if(transition == dSize(dfa) - 1)
+        else if(transition >= dSize(dfa) - 1)
         {
 
             dSetState(dfa, REJECT);
@@ -123,7 +132,7 @@ int** copyOfMatrix(NFA n)
     return matrix;
 }
 
-void DFA_free(DFA d)
+void dFree(DFA d)
 {
     for(int i=0; i < d->size; i++)
     {

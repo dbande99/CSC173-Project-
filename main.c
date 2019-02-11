@@ -64,6 +64,20 @@ DFA DFA_question4()
 
     return dfa;
 }
+//Tests if a .. e .. i .. o .. u in string
+//Credit to textbook for idea
+DFA DFA_question5()
+{
+    DFA dfa = new_DFA(6);
+    dAdds(dfa, "aeiou");
+    dAdd(dfa, 0, 0, 'a' * -1);
+    dAdd(dfa, 1, 1, 'e' * -1);
+    dAdd(dfa, 2, 2, 'i' * -1);
+    dAdd(dfa, 3, 3, 'o' * -1);
+    dAdd(dfa, 4, 4, 'u' * -1);
+    dAdd(dfa, 5, 5, LOOP);
+    return dfa;
+}
 NFA NFA_question1()
 {
     NFA nfa = new_NFA(5);
@@ -84,7 +98,7 @@ NFA NFA_question2()
 }
 int main()
 {
-    /*char* test1 = "csc173";
+    char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
     printf("%d\n",DFA_execute(d1,test1));
@@ -94,35 +108,40 @@ int main()
 
     printf("%d\n", DFA_execute(d2, test2));
 
-    char* test3 = "001101";
+    char* test3 = "00";
     DFA d3 = DFA_question3();
 
-    printf("%d\n", DFA_execute(d3, test3));*/
+    printf("%d\n", DFA_execute(d3, test3));
 
-    char* test10 = "1010";
-    DFA d10 = DFA_question4();
+    char* test4 = "1010";
+    DFA d4 = DFA_question4();
 
-    printf("Tester %d\n", DFA_execute(d10, test10));
+    printf("%d\n", DFA_execute(d4, test4));
+    char* test5 = "abstemious";
+    DFA d5 = DFA_question5();
 
-    /*DFA_free(d1);
-    DFA_free(d2);
-    DFA_free(d3);
-    DFA_free(d10);
+    printf("%d\n", DFA_execute(d5, test5));
 
-    char* test4 = "codeaa";
+    dFree(d1);
+    dFree(d2);
+    dFree(d3);
+    dFree(d4);
+    dFree(d5);
+
+    char* test6 = "aacode";
     NFA n1 = NFA_question1();
-    printf("%d\n", NFA_execute(n1, test4));
+    printf("%d\n", NFA_execute(n1, test6));
 
     //printf("%d\n", DFA_execute(DFAtoNFA(n1), test4));
 
-    char* test5 = "codea";
+    char* test7 = "codea";
     NFA n2 = NFA_question2();
-    printf("%d\n", NFA_execute(n2, test5));
+    printf("%d\n", NFA_execute(n2, test7));
 
     //printf("%d\n", DFA_execute(DFAtoNFA(n2), test5));
 
     nFree(n1);
-    nFree(n2);*/
+    nFree(n2);
 
     return 0;
 }
