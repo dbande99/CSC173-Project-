@@ -8,106 +8,127 @@
 
 #include "nfa.h"
 #include "dfa.h"
+
 #define LOOP INT_MAX
 #define EMPTY INT_MIN
+
+
 NFA new_NFA(int nstates)
 {
-    //Allocate for DFA and matrix
-    NFA n = (NFA) malloc(sizeof(NFA) + sizeof(int**) + sizeof(int*));
+    NFA nfa = (NFA) malloc(sizeof(NFA) + sizeof(int**) + sizeof(int*));
+    nfa->size = nstates;
+    /*Multiple current states instead of one
+     *EMPTY means currently not in that state
+     *e.g. {0, EMPTY, EMPTY, 3, 4}
+     *Less efficient than a list but faster to implement
+    */
+    nfa->states = initArr(nstates);
+    nfa->states[0] = 0;
 
-    n->size = nstates;
-    n->current_state = malloc(nstates * sizeof(int));
-    n->current_state[0] = 0;
-    for(int i = 1; i < nstates; i++)
-    {
-        n->current_state[i] = EMPTY;
-    }
-    n->matrix = new_matrix(nstates);
+    nfa->matrix = new_matrix(nstates);
 
-    return n;
+    return nfa;
 }
-
-void NFA_free(NFA n)
+//Transition on symbol for all current states
+void nTrans(NFA nfa, char sym)
 {
-    for(int i=0; i < n->size; i++)
-    {
-        free(n->matrix[i]);
-    }
-    free(n->matrix);
-    free(n->current_state);
-    free(n);
-}
+    //newStates contains the updated states
+    int* newStates = initArr(nSize(nfa));
+    //Transition counter needed to check if any transitions happened
+    int trans = 0;
 
-void NFA_get_transitions(NFA n, char sym)
-{
-    int* newstates = (int*) malloc(n->size * sizeof(int));
-    for(int i = 0; i < n->size; i++)
+    //For each current state
+    for(int state = 0; state < nSize(nfa);state++)
     {
-        newstates[i] = EMPTY;
-    }
-    int transition = 0;
-    //For all states
-    for(int s = 0; s < n->size; s++)
-    {
-        //If intMax, means loop on self
-        /*if (n->matrix[z][z] == LOOP)
+        //State EMPTY means not in it
+        if(nfa->states[state] != EMPTY)
         {
-            continue;
-        }*/
-
-        if(n->current_state[s] != EMPTY)
-        {
-            //For all transitions
-            for (int t = 0; t < n->size; t++)
+            //For all transitions a.k.a. row of AdjMatrix
+            for (int transition = 0; transition < nSize(nfa); transition++)
             {
-                //i represents next state
-                if (n->matrix[s][t] == sym)
+                if (nfa->matrix[state][transition] == sym)
                 {
-                    newstates[t] = t;
-                    transition++;
+                    newStates[transition] = transition;
+                    trans++;
                 }
-                if(n->matrix[s][t] == LOOP)
+                else if(nfa->matrix[state][transition] == LOOP)
                 {
-                    newstates[s] = s;
-                    transition++;
+                    newStates[state] = state;
+                    trans++;
                 }
-
-                //Did not find transition, reject state
-                if (!transition && t == n->size - 1)
+                //No transitions present
+                else if (!trans && transition == nSize(nfa) - 1)
                 {
-                    //printf("%n %c \n", n->current_state, symb);
-                    newstates[s] = EMPTY;
+                    newStates[state] = EMPTY;
                 }
             }
+            trans = 0;
         }
-        transition = 0;
     }
-
-    for(int i = 0; i < n->size; i++)
+    //Copy newStates to NFA's states
+    for(int i = 0; i < nSize(nfa); i++)
     {
-        n->current_state[i] = newstates[i];
+        nfa->states[i] = newStates[i];
     }
-    free(newstates);
+    free(newStates);
 }
-
-bool NFA_execute(NFA n, char *input)
+//Executes NFA on some input string
+int NFA_execute(NFA nfa, char *input)
 {
     int length = strlen(input);
 
     for(int i = 0; i < length; i++)
     {
-        NFA_get_transitions(n, input[i]);
+        nTrans(nfa, input[i]);
     }
-
-    //printf("%d", d->current_state);
-
-    //If any state is accepting, return true else false
-
-    for(int i = 0; i < n->size; i++) {
-        //printf("State %d %d\n", i, n->current_state[i]);
-        if (n->current_state[i] + 1 == n->size) {
-            return true;
+    for(int i = 0; i < nSize(nfa); i++)
+    {
+        //At least one state must be in accepting
+        if (nfa->states[i] + 1 == nSize(nfa))
+        {
+            return 1;
         }
     }
-    return false;
+    return 0;
+}
+
+int nSize(NFA nfa)
+{
+    return nfa->size;
+}
+//Adds edge to AdjMatrix e.g. 'c' to [0][1]
+void nAdd(NFA nfa, int src, int dst, int sym)
+{
+    nfa->matrix[src][dst] = sym;
+}
+//Adds phrase to matrix (e.g. "code" 'c' [0][1] 'o' [1][2] ...)
+void nAdds(NFA nfa, char* str)
+{
+    for(int i = 0; i < strlen(str); i++)
+    {
+        nAdd(nfa, i, i + 1, str[i]);
+    }
+}
+//INIT empty array
+int* initArr(int size)
+{
+    int* arr = (int*) malloc(size * sizeof(int));
+
+    for(int i = 0; i < size; i++)
+    {
+        arr[i] = EMPTY;
+    }
+
+    return arr;
+}
+//Frees NFA and its elements
+void nFree(NFA nfa)
+{
+    for(int i=0; i < nfa->size; i++)
+    {
+        free(nfa->matrix[i]);
+    }
+    free(nfa->matrix);
+    free(nfa->states);
+    free(nfa);
 }

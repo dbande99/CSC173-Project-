@@ -64,7 +64,8 @@ DFA new_DFA(int states)
 
 void DFA_free(DFA d)
 {
-    for(int i=0; i < d->size; i++) {
+    for(int i=0; i < d->size; i++)
+    {
         free(d->matrix[i]);
     }
     free(d->matrix);
@@ -82,7 +83,7 @@ void DFA_get_transition(DFA d, char sym)
     for(int i = 0; i < d->size; i++)
     {
         //i represents next state
-        //printf("%d %d %c %c \n", d->current_state, i, d->matrix.matrix[d->current_state][i], symb);
+        //printf("%d %d %c %c \n", d->states, i, d->matrix.matrix[d->states][i], symb);
         if(sym == d->matrix[d->current_state][i])
         {
             d->current_state = i;
@@ -99,7 +100,7 @@ void DFA_get_transition(DFA d, char sym)
             //did not find transition
         else if(i == d->size - 1)
         {
-            //printf("%d %c \n", d->current_state, symb);
+            //printf("%d %c \n", d->states, symb);
             d -> current_state = REJECT;
         }
     }
@@ -122,6 +123,6 @@ bool DFA_execute(DFA d, char *input)
         }
 
     }
-    //printf("%d", d->current_state);
+    //printf("%d", d->states);
     return (d->current_state+1) == d->size;
 }
