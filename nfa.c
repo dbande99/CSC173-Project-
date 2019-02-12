@@ -77,14 +77,14 @@ void nTrans(NFA nfa, char sym)
 //Executes NFA on some input string
 int NFA_execute(NFA nfa, char *input)
 {
-    int length = strlen(input);
 
-    for(int i = 0; i < length; i++)
+    for(int i = 0; i < strlen(input); i++)
     {
         nTrans(nfa, input[i]);
     }
     for(int i = 0; i < nSize(nfa); i++)
     {
+
         //At least one state must be in accepting
         if (nfa->states[i] + 1 == nSize(nfa))
         {

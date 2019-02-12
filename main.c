@@ -96,6 +96,32 @@ NFA NFA_question2()
     nAdds(nfa, "code");
     return nfa;
 }
+NFA NFA_question3()
+{
+    NFA nfa = new_NFA(12);
+
+    nAdd(nfa, 0, 0, LOOP);
+    nAdd(nfa, 11, 11, LOOP);
+
+    char* str = "aghiostw";
+    for(int i = 1; i < 9; i++)
+    {
+        nAdd(nfa, 0, i, str[i-1]);
+        nAdd(nfa, i, 11, str[i-1]);
+        nAdd(nfa, i, i, LOOP);
+    }
+    nAdd(nfa, 0, 9, 'n');
+
+    nAdd(nfa, 9, 9, LOOP);
+    nAdd(nfa, 9, 10, 'n');
+
+
+    nAdd(nfa, 10, 10, LOOP);
+    nAdd(nfa, 10, 11, 'n');
+
+    return nfa;
+}
+
 int main()
 {
     char* test1 = "csc173";
@@ -140,8 +166,13 @@ int main()
 
     //printf("%d\n", DFA_execute(DFAtoNFA(n2), test5));
 
+    char* test8 = "aniyzzzna";
+    NFA n3 = NFA_question3();
+
+    printf("%d\n", NFA_execute(n3, test8));
     nFree(n1);
     nFree(n2);
+    nFree(n3);
 
     return 0;
 }
