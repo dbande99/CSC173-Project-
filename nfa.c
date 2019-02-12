@@ -1,6 +1,3 @@
-//
-// Created by Evan on 2/5/2019.
-//
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,7 +81,6 @@ int NFA_execute(NFA nfa, char *input)
     }
     for(int i = 0; i < nSize(nfa); i++)
     {
-
         //At least one state must be in accepting
         if (nfa->states[i] + 1 == nSize(nfa))
         {
@@ -106,7 +102,7 @@ void nAdd(NFA nfa, int src, int dst, int sym)
 //Adds phrase to matrix (e.g. "code" 'c' [0][1] 'o' [1][2] ...)
 void nAdds(NFA nfa, char* str)
 {
-    for(int i = 0; i < strlen(str); i++)
+    for(int i = 0; i < (int) strlen(str); i++)
     {
         nAdd(nfa, i, i + 1, str[i]);
     }

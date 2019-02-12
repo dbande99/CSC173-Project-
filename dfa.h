@@ -5,6 +5,7 @@
  * Time-stamp: <Tue Aug  8 11:30:46 EDT 2017 ferguson>
  */
 #include "nfa.h"
+#include "HashSet.h"
 #ifndef _dfa_h
 #define _dfa_h
 
@@ -67,8 +68,9 @@ extern void dSetState(DFA dfa, int state);
 
 extern int DFA_execute(DFA dfa, char *input);
 
-extern int** copyOfMatrix(NFA n);
+extern void copyOfMatrix(NFA nfa, DFA dfa);
 
+extern void generateSubSet(DFA dfa, HashSet hash);
 
 #endif
 

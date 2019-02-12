@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.11)
 project(CSC173_Project_)
 
-set(CMAKE_CXX_STANDARD 14)
+set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Werror")
+set(CMAKE_C_FLAGS "-std=c99")
 
 include_directories(.)
 
@@ -11,4 +12,4 @@ add_executable(CSC173_Project_
         dfa.h
         main.c
         nfa.c
-        nfa.h)
+        nfa.h HashSet.h HashSet.c)

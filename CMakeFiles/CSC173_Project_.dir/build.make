@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -60,47 +60,61 @@ include CMakeFiles/CSC173_Project_.dir/flags.make
 CMakeFiles/CSC173_Project_.dir/dfa.c.o: CMakeFiles/CSC173_Project_.dir/flags.make
 CMakeFiles/CSC173_Project_.dir/dfa.c.o: dfa.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/CSC173_Project_.dir/dfa.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/dfa.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/dfa.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c
 
 CMakeFiles/CSC173_Project_.dir/dfa.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC173_Project_.dir/dfa.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c > CMakeFiles/CSC173_Project_.dir/dfa.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c > CMakeFiles/CSC173_Project_.dir/dfa.c.i
 
 CMakeFiles/CSC173_Project_.dir/dfa.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC173_Project_.dir/dfa.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c -o CMakeFiles/CSC173_Project_.dir/dfa.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.c -o CMakeFiles/CSC173_Project_.dir/dfa.c.s
 
 CMakeFiles/CSC173_Project_.dir/main.c.o: CMakeFiles/CSC173_Project_.dir/flags.make
 CMakeFiles/CSC173_Project_.dir/main.c.o: main.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CSC173_Project_.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/main.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/main.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/main.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/main.c
 
 CMakeFiles/CSC173_Project_.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC173_Project_.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/main.c > CMakeFiles/CSC173_Project_.dir/main.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/main.c > CMakeFiles/CSC173_Project_.dir/main.c.i
 
 CMakeFiles/CSC173_Project_.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC173_Project_.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/main.c -o CMakeFiles/CSC173_Project_.dir/main.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/main.c -o CMakeFiles/CSC173_Project_.dir/main.c.s
 
 CMakeFiles/CSC173_Project_.dir/nfa.c.o: CMakeFiles/CSC173_Project_.dir/flags.make
 CMakeFiles/CSC173_Project_.dir/nfa.c.o: nfa.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CSC173_Project_.dir/nfa.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/nfa.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/nfa.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c
 
 CMakeFiles/CSC173_Project_.dir/nfa.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC173_Project_.dir/nfa.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c > CMakeFiles/CSC173_Project_.dir/nfa.c.i
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c > CMakeFiles/CSC173_Project_.dir/nfa.c.i
 
 CMakeFiles/CSC173_Project_.dir/nfa.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC173_Project_.dir/nfa.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c -o CMakeFiles/CSC173_Project_.dir/nfa.c.s
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c -o CMakeFiles/CSC173_Project_.dir/nfa.c.s
+
+CMakeFiles/CSC173_Project_.dir/HashSet.c.o: CMakeFiles/CSC173_Project_.dir/flags.make
+CMakeFiles/CSC173_Project_.dir/HashSet.c.o: HashSet.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CSC173_Project_.dir/HashSet.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC173_Project_.dir/HashSet.c.o   -c /home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.c
+
+CMakeFiles/CSC173_Project_.dir/HashSet.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC173_Project_.dir/HashSet.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.c > CMakeFiles/CSC173_Project_.dir/HashSet.c.i
+
+CMakeFiles/CSC173_Project_.dir/HashSet.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC173_Project_.dir/HashSet.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.c -o CMakeFiles/CSC173_Project_.dir/HashSet.c.s
 
 # Object files for target CSC173_Project_
 CSC173_Project__OBJECTS = \
 "CMakeFiles/CSC173_Project_.dir/dfa.c.o" \
 "CMakeFiles/CSC173_Project_.dir/main.c.o" \
-"CMakeFiles/CSC173_Project_.dir/nfa.c.o"
+"CMakeFiles/CSC173_Project_.dir/nfa.c.o" \
+"CMakeFiles/CSC173_Project_.dir/HashSet.c.o"
 
 # External object files for target CSC173_Project_
 CSC173_Project__EXTERNAL_OBJECTS =
@@ -108,9 +122,10 @@ CSC173_Project__EXTERNAL_OBJECTS =
 CSC173_Project_: CMakeFiles/CSC173_Project_.dir/dfa.c.o
 CSC173_Project_: CMakeFiles/CSC173_Project_.dir/main.c.o
 CSC173_Project_: CMakeFiles/CSC173_Project_.dir/nfa.c.o
+CSC173_Project_: CMakeFiles/CSC173_Project_.dir/HashSet.c.o
 CSC173_Project_: CMakeFiles/CSC173_Project_.dir/build.make
 CSC173_Project_: CMakeFiles/CSC173_Project_.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable CSC173_Project_"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable CSC173_Project_"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CSC173_Project_.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

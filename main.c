@@ -6,9 +6,6 @@
 #include "nfa.h"
 #define LOOP INT_MAX
 #define EMPTY INT_MIN
-/* IMPLEMENT OTHER FUNCTIONS IN DFA.H AND NFA.H
- *
- */
 DFA DFA_question1()
 {
     DFA dfa = new_DFA(7);
@@ -121,22 +118,23 @@ NFA NFA_question3()
 
     return nfa;
 }
+//LANGUAGE IS ANY STRING WITH TWO/MORE CONTINUOUS VOWELS
+//e.g. scoot, loop, parakeet, deep
 NFA NFA_question4()
 {
     NFA nfa = new_NFA(7);
     char* str = "aeiou";
     nAdd(nfa, 0, 0, LOOP);
+    nAdd(nfa, 6, 6, LOOP);
     for(int i = 1; i < 5; i++)
     {
+        nAdd(nfa, 0, i, str[i - 1]);
         nAdd(nfa, i, 6, str[i - 1]);
-        nAdd(nfa, i, i, str[i - 1] * -1);
-        nAdd(nfa, 6, i, str[i - 1]);
     }
     return nfa;
 }
 int main()
 {
-    /*
     char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
@@ -166,27 +164,37 @@ int main()
     dFree(d3);
     dFree(d4);
     dFree(d5);
-*/
-    char* test6 = "codea";
+
+    char* test6 = "codecode";
     NFA n1 = NFA_question1();
-    printf("%d\n", NFA_execute(n1, test6));
+    printf("test %d\n", NFA_execute(n1, test6));
+    DFA d6 = NFAtoDFA(n1);
+    printf("test %d\n", DFA_execute(d6, test6));
 
-    printf("%d\n", DFA_execute(NFAtoDFA(n1), test6));
-
-    char* test7 = "acodeea";
+    char* test7 = "codecode";
     NFA n2 = NFA_question2();
-    printf("%d\n", NFA_execute(n2, test7));
-
-    printf("%d\n", DFA_execute(NFAtoDFA(n2), test7));
+    printf("test2 %d\n", NFA_execute(n2, test7));
+    DFA d7 = NFAtoDFA(n2);
+    printf("test2 %d\n", DFA_execute(d7, test7));
 
     char* test8 = "aacxxb";
     NFA n3 = NFA_question3();
 
     printf("%d\n", NFA_execute(n3, test8));
+
+
+    char* test9 = "parakeet";
+    NFA n4 = NFA_question4();
+
+    printf("%d\n", NFA_execute(n4, test9));
+
     nFree(n1);
     nFree(n2);
     nFree(n3);
+    nFree(n4);
 
+    dFree(d6);
+    dFree(d7);
 
     return 1;
 }

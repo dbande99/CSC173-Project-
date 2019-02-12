@@ -6,23 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.h
+stdlib.h
+-
+
 /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
 nfa.h
 /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
+HashSet.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.h
 
-/home/ehab/Desktop/CSC173/CSC173-Project-/main.c
+/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c
+limits.h
+-
 stdlib.h
+-
+string.h
 -
 stdio.h
 -
-limits.h
--
-stdbool.h
--
-dfa.h
-/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
 nfa.h
 /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
+dfa.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
 
 /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
 

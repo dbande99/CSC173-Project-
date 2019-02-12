@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/ehab/Desktop/CSC173/CSC173-Project-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,8 +69,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,33 @@ CSC173_Project_: cmake_check_build_system
 CSC173_Project_/fast:
 	$(MAKE) -f CMakeFiles/CSC173_Project_.dir/build.make CMakeFiles/CSC173_Project_.dir/build
 .PHONY : CSC173_Project_/fast
+
+HashSet.o: HashSet.c.o
+
+.PHONY : HashSet.o
+
+# target to build an object file
+HashSet.c.o:
+	$(MAKE) -f CMakeFiles/CSC173_Project_.dir/build.make CMakeFiles/CSC173_Project_.dir/HashSet.c.o
+.PHONY : HashSet.c.o
+
+HashSet.i: HashSet.c.i
+
+.PHONY : HashSet.i
+
+# target to preprocess a source file
+HashSet.c.i:
+	$(MAKE) -f CMakeFiles/CSC173_Project_.dir/build.make CMakeFiles/CSC173_Project_.dir/HashSet.c.i
+.PHONY : HashSet.c.i
+
+HashSet.s: HashSet.c.s
+
+.PHONY : HashSet.s
+
+# target to generate assembly for a file
+HashSet.c.s:
+	$(MAKE) -f CMakeFiles/CSC173_Project_.dir/build.make CMakeFiles/CSC173_Project_.dir/HashSet.c.s
+.PHONY : HashSet.c.s
 
 dfa.o: dfa.c.o
 
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... CSC173_Project_"
 	@echo "... edit_cache"
+	@echo "... HashSet.o"
+	@echo "... HashSet.i"
+	@echo "... HashSet.s"
 	@echo "... dfa.o"
 	@echo "... dfa.i"
 	@echo "... dfa.s"

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CSC173_Project_.dir/dfa.c.o"
   "CMakeFiles/CSC173_Project_.dir/main.c.o"
   "CMakeFiles/CSC173_Project_.dir/nfa.c.o"
+  "CMakeFiles/CSC173_Project_.dir/HashSet.c.o"
   "CSC173_Project_.pdb"
   "CSC173_Project_"
 )

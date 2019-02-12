@@ -1,4 +1,4 @@
-/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /home/ehab/Desktop/CSC173/CSC173-Project-
+/usr/bin/cmake -DCMAKE_BUILD_TYPE= -DCMAKE_C_COMPILER=/usr/bin/gcc -G "CodeBlocks - Unix Makefiles" /home/ehab/Desktop/CSC173/CSC173-Project-
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/ehab/Desktop/CSC173/CSC173-Project-
