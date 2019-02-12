@@ -11,12 +11,38 @@
 #define REJECT -1
 #define LOOP INT_MAX
 #define EMPTY INT_MIN
+//All except those that have transitions
+#define ALLEXCEPT INT_MAX - 1
 
 DFA NFAtoDFA(NFA nfa)
 {
-    DFA dfa = new_DFA(nSize(nfa));
+    int size = nSize(nfa);
+    int trans = EMPTY;
+    int loop = -1;
+
+    DFA dfa = new_DFA(size);
     dfa->matrix = copyOfMatrix(nfa);
 
+    if(dfa->matrix[0][0] == LOOP)
+    {
+        loop = 0;
+    }
+
+    for(int i = 0; i < size; i++)
+    {
+        for(int j = 0; j < size; j++)
+        {
+            if(i == 0 && dfa->matrix[i][j] != EMPTY)
+            {
+                trans = dfa->matrix[i][j];
+            }
+            else if(trans != EMPTY)
+            {
+                dAdd(dfa, i, loop, ALLEXCEPT);
+                dAdd(dfa, i, loop+1, trans);
+            }
+        }
+    }
     return dfa;
 }
 
@@ -33,33 +59,49 @@ DFA new_DFA(int states)
 
 void DFA_get_transition(DFA dfa, char sym)
 {
-    if(dfa->matrix[dState(dfa)][dState(dfa)] == LOOP)
+    int curr = dState(dfa);
+    //except marker
+    int* except = (int*) malloc(2 * sizeof(int));
+    except[0] = 0;
+    except[1] = 0;
+    if(dfa->matrix[curr][curr] == LOOP)
     {
+        free(except);
         return;
     }
     for(int transition = 0; transition < dSize(dfa); transition++)
     {
-        //sym * -1 means loop on all but this sym
-        if(dfa->matrix[dState(dfa)][transition] < 0 && dfa->matrix[dState(dfa)][transition] != EMPTY)
+        if(dfa->matrix[curr][transition] == ALLEXCEPT)
         {
-            if(dfa->matrix[dState(dfa)][transition] != sym * -1)
+            except[0] = 1;
+            except[1] = transition;
+        }
+        //sym * -1 means loop on all but this sym
+        if(dfa->matrix[curr][transition] < 0 && dfa->matrix[curr][transition] != EMPTY)
+        {
+            if(dfa->matrix[curr][transition] != sym * -1)
             {
+                free(except);
                 return;
             }
         }
 
-        if(dfa->matrix[dState(dfa)][transition] == sym)
+        if(dfa->matrix[curr][transition] == sym)
         {
             dSetState(dfa, transition);
             break;
         }
         //Did not find transition
-        else if(transition >= dSize(dfa) - 1)
+        else if(transition >= dSize(dfa) - 1 && !except[0])
         {
-
             dSetState(dfa, REJECT);
         }
+        else if(transition >= dSize(dfa) - 1)
+        {
+            dSetState(dfa, except[1]);
+        }
     }
+    free(except);
 }
 
 int DFA_execute(DFA dfa, char *input)

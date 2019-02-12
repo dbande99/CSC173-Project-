@@ -121,9 +121,22 @@ NFA NFA_question3()
 
     return nfa;
 }
-
+NFA NFA_question4()
+{
+    NFA nfa = new_NFA(7);
+    char* str = "aeiou";
+    nAdd(nfa, 0, 0, LOOP);
+    for(int i = 1; i < 5; i++)
+    {
+        nAdd(nfa, i, 6, str[i - 1]);
+        nAdd(nfa, i, i, str[i - 1] * -1);
+        nAdd(nfa, 6, i, str[i - 1]);
+    }
+    return nfa;
+}
 int main()
 {
+    /*
     char* test1 = "csc173";
     DFA d1 = DFA_question1();
 
@@ -153,20 +166,20 @@ int main()
     dFree(d3);
     dFree(d4);
     dFree(d5);
-
-    char* test6 = "aacode";
+*/
+    char* test6 = "codea";
     NFA n1 = NFA_question1();
     printf("%d\n", NFA_execute(n1, test6));
 
-    //printf("%d\n", DFA_execute(DFAtoNFA(n1), test4));
+    printf("%d\n", DFA_execute(NFAtoDFA(n1), test6));
 
-    char* test7 = "codea";
+    char* test7 = "acodeea";
     NFA n2 = NFA_question2();
     printf("%d\n", NFA_execute(n2, test7));
 
-    //printf("%d\n", DFA_execute(DFAtoNFA(n2), test5));
+    printf("%d\n", DFA_execute(NFAtoDFA(n2), test7));
 
-    char* test8 = "aniyzzzna";
+    char* test8 = "aacxxb";
     NFA n3 = NFA_question3();
 
     printf("%d\n", NFA_execute(n3, test8));
@@ -174,6 +187,7 @@ int main()
     nFree(n2);
     nFree(n3);
 
-    return 0;
+
+    return 1;
 }
 
