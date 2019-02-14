@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <limits.h>
-#include <HashSet.h>
+#include "HashSet.h"
 #include <stdio.h>
-#include <dfa.h>
+#include "dfa.h"
 #define EMPTY INT_MIN
 
 HashSet new_HashSet(int size)

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
-#include <HashSet.h>
+#include "HashSet.h"
 #include "nfa.h"
 #include "dfa.h"
 

@@ -1,3 +1,0 @@
-/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles/rebuild_cache.dir
-/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles/CSC173_Project_.dir
-/home/ehab/Desktop/CSC173/CSC173-Project-/CMakeFiles/edit_cache.dir
