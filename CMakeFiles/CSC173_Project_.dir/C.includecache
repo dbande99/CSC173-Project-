@@ -16,19 +16,21 @@ nfa.h
 HashSet.h
 /home/ehab/Desktop/CSC173/CSC173-Project-/HashSet.h
 
-/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.c
-limits.h
--
+/home/ehab/Desktop/CSC173/CSC173-Project-/main.c
 stdlib.h
--
-string.h
 -
 stdio.h
 -
-nfa.h
-/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
+limits.h
+-
+string.h
+-
+stdbool.h
+-
 dfa.h
 /home/ehab/Desktop/CSC173/CSC173-Project-/dfa.h
+nfa.h
+/home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
 
 /home/ehab/Desktop/CSC173/CSC173-Project-/nfa.h
 

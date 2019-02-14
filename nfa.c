@@ -15,6 +15,7 @@ NFA new_NFA(int nstates)
     NFA nfa = (NFA) malloc(sizeof(NFA) + sizeof(int**) + sizeof(int*));
 
     nfa->size = nstates;
+
     /*Multiple current states instead of one
      *EMPTY means currently not in that state
      *e.g. {0, EMPTY, EMPTY, 3, 4}
@@ -74,6 +75,11 @@ void nTrans(NFA nfa, char sym)
 //Executes NFA on some input string
 int NFA_execute(NFA nfa, char *input)
 {
+    for(int i = 0; i < nSize(nfa); i++)
+    {
+        nfa->states[i] = EMPTY;
+    }
+    nfa->states[0] = 0;
 
     for(int i = 0; i < strlen(input); i++)
     {

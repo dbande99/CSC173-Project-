@@ -22,6 +22,13 @@ DFA NFAtoDFA(NFA nfa)
     //Generate subsets
     HashSet hash = new_HashSet(size);
     generateSubSet(dfa, hash);
+   for(int i = 0; i < size; i++)
+    {
+        for(int j = 0; j < size; j++)
+        {
+
+        }
+    }
 
     int* repeat = initArr(size);
 
@@ -56,6 +63,7 @@ DFA NFAtoDFA(NFA nfa)
             trans = (char) check;
         }
     }
+
     dfa->matrix[repeated][repeated] = ALLEXCEPT;
 
     for(int subset = 0; subset < size; subset++)
@@ -172,6 +180,7 @@ void DFA_get_transition(DFA dfa, char sym)
 int DFA_execute(DFA dfa, char *input)
 {
     int length = (int) strlen(input);
+    dfa->current_state = 0;
     for(int i = 0; i < length; i++)
     {
         if(dState(dfa) != REJECT)
@@ -179,7 +188,7 @@ int DFA_execute(DFA dfa, char *input)
             DFA_get_transition(dfa, input[i]);
         }
     }
-    return dState(dfa)+1 == dSize(dfa);
+    return dState(dfa) + 1 == dSize(dfa);
 }
 
 int dSize(DFA dfa)

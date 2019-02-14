@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
+#include <string.h>
 #include <stdbool.h>
 #include "dfa.h"
 #include "nfa.h"
@@ -61,8 +62,9 @@ DFA DFA_question4()
 
     return dfa;
 }
-//Tests if a .. e .. i .. o .. u in string
-//Credit to textbook for idea
+/*Tests if a .. e .. i .. o .. u in string
+  Credit to textbook for idea
+ */
 DFA DFA_question5()
 {
     DFA dfa = new_DFA(6);
@@ -118,8 +120,11 @@ NFA NFA_question3()
 
     return nfa;
 }
-//LANGUAGE IS ANY STRING WITH TWO/MORE CONTINUOUS VOWELS
-//e.g. scoot, loop, parakeet, deep
+/*
+ *LANGUAGE IS ANY STRING WITH
+  TWO/MORE OF SAME CONTINUOUS VOWELS
+  e.g. scoot, loop, parakeet, deep
+  */
 NFA NFA_question4()
 {
     NFA nfa = new_NFA(7);
@@ -133,68 +138,140 @@ NFA NFA_question4()
     }
     return nfa;
 }
+int strEq(char* a, char* b)
+{
+    for(int i = 0; i < strlen(b); i++)
+    {
+        if(a[i] != b[i])
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+char* removeNewLine(char* str)
+{
+    int i = 0;
+
+    while(i < 255)
+    {
+        if(str[i] == '\n')
+        {
+            str[i] = '\0';
+            break;
+        }
+        i++;
+    }
+
+    return str;
+}
+void runDAuto(DFA dfa, int question)
+{
+    question--;
+    char* q1 = "Testing DFA that recognizes exactly 'csc173'";
+    char* q2 = "Testing DFA that recognizes strings starting with 'cat'";
+    char* q3 = "Testing DFA that recognizes an even numbers of 0's";
+    char* q4 = "Testing DFA that recognizes an even number of 0's and 1's";
+    char* q5 = "Testing DFA that recognizes any string with .a.e.i.o.u.";
+    char* q6 = "Testing NFA to DFA that recognizes strings ending in 'code'";
+    char* q7 = "Testing NFA to DFA that recognizes strings containing 'code'";
+
+    const char* out[] = {q1,q2,q3,q4,q5,q6,q7};
+
+    char* askIn = "Enter an input ('quit' to quit): ";
+    char* input = malloc(255 * sizeof(char));
+
+    char* result = "abcde";
+    printf("%s\n", out[question]);
+    do {
+        printf("%s", askIn);
+        fgets(input, 255, stdin);
+
+        input = removeNewLine(input);
+
+        result = DFA_execute(dfa,input) ? "true":"false";
+
+        if(!strEq(input, "quit"))
+        {
+            printf("Input: %s\n", input);
+            printf("Result for input '%s': %s\n", input, result);
+        }
+    } while(!strEq(input, "quit"));
+    printf("\n\n");
+    free(input);
+}
+void runNAuto(NFA nfa, int question)
+{
+    question--;
+    char* q1 = "Testing NFA to DFA that recognizes strings ending in 'code'";
+    char* q2 = "Testing NFA to DFA that recognizes strings containing 'code'";
+    char* q3 = "Testing NFA that recognizes strings that are not partial anagrams of 'washington'";
+    char* q4 = "Testing NFA that recognizes two/more of the same consecutive vowels";
+    const char* out[] = {q1,q2,q3,q4};
+
+    char* askIn = "Enter an input ('quit' to quit): ";
+    char* input = malloc(255 * sizeof(char));
+
+    char* result = "abcde";
+    printf("%s\n", out[question]);
+    do {
+        printf("%s", askIn);
+        fgets(input, 255, stdin);
+
+        input = removeNewLine(input);
+
+        result = NFA_execute(nfa,input) ? "true":"false";
+
+        if(!strEq(input, "quit"))
+        {
+            printf("Input: %s\n", input);
+            printf("Result for input '%s': %s\n", input, result);
+        }
+    } while(!strEq(input, "quit"));
+
+    printf("\n\n");
+    free(input);
+}
+
 int main()
 {
-    char* test1 = "csc173";
     DFA d1 = DFA_question1();
-
-    printf("%d\n",DFA_execute(d1,test1));
-
-    char* test2 = "cat";
+    runDAuto(d1, 1);
     DFA d2 = DFA_question2();
-
-    printf("%d\n", DFA_execute(d2, test2));
-
-    char* test3 = "00";
+    runDAuto(d2, 2);
     DFA d3 = DFA_question3();
-
-    printf("%d\n", DFA_execute(d3, test3));
-
-    char* test4 = "1010";
+    runDAuto(d3, 3);
     DFA d4 = DFA_question4();
-
-    printf("%d\n", DFA_execute(d4, test4));
-    char* test5 = "abstemious";
+    runDAuto(d4, 4);
     DFA d5 = DFA_question5();
+    runDAuto(d5, 5);
 
-    printf("%d\n", DFA_execute(d5, test5));
+    NFA n1 = NFA_question1();
+    runNAuto(n1,1);
+    NFA n2 = NFA_question2();
+    runNAuto(n2,2);
+    NFA n3 = NFA_question3();
+    runNAuto(n3,3);
+    NFA n4 = NFA_question4();
+    runNAuto(n4,4);
+
+    DFA d6 = NFAtoDFA(n1);
+    runDAuto(d6,6);
+    DFA d7 = NFAtoDFA(n2);
+    runDAuto(d7,7);
 
     dFree(d1);
     dFree(d2);
     dFree(d3);
     dFree(d4);
     dFree(d5);
-
-    char* test6 = "codecode";
-    NFA n1 = NFA_question1();
-    printf("test %d\n", NFA_execute(n1, test6));
-    DFA d6 = NFAtoDFA(n1);
-    printf("test %d\n", DFA_execute(d6, test6));
-
-    char* test7 = "codecode";
-    NFA n2 = NFA_question2();
-    printf("test2 %d\n", NFA_execute(n2, test7));
-    DFA d7 = NFAtoDFA(n2);
-    printf("test2 %d\n", DFA_execute(d7, test7));
-
-    char* test8 = "aacxxb";
-    NFA n3 = NFA_question3();
-
-    printf("%d\n", NFA_execute(n3, test8));
-
-
-    char* test9 = "parakeet";
-    NFA n4 = NFA_question4();
-
-    printf("%d\n", NFA_execute(n4, test9));
+    dFree(d6);
+    dFree(d7);
 
     nFree(n1);
     nFree(n2);
     nFree(n3);
     nFree(n4);
-
-    dFree(d6);
-    dFree(d7);
 
     return 1;
 }
